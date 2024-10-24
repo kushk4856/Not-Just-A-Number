@@ -1,0 +1,152 @@
+/* Responsive styles */
+
+@media (max-width: 425px) {
+    .card-content {
+        flex-direction: column;
+    }
+
+    .card-content {
+        padding: 10px;
+    }
+}
+
+@media (min-width: 640px) {
+
+    .modal-content {
+        margin: 0.5rem;
+    }
+
+    .modal-header,
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-footer {
+        padding: 1rem;
+    }
+
+    /* ----accordion--- */
+
+    .accordian_section {
+        padding: 2rem 1.5rem;
+    }
+
+    .header h2 {
+        font-size: 1.875rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .accordion {
+        gap: 1rem;
+    }
+
+    .accordion-button {
+        padding: 1rem 1.25rem;
+    }
+
+    .accordion-question {
+        font-size: 20px;
+    }
+
+    .accordion-icon,
+    .up-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    .accordion-answer {
+        padding: 1.25rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+/* ============custon responsive css========= */
+
+
+
+
+
+
+
+
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .col-sm-12 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    .justify-content-sm-center {
+        justify-content: center !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .ps-md-5 {
+        padding-left: 3rem !important;
+    }
+
+    .col-md-7 {
+        flex: 0 0 auto;
+        width: 58.3333333333%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .col-lg-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+
+    .col-lg-9 {
+        width: 70%;
+    }
+
+    .col-lg-8 {
+        flex: 0 0 auto;
+        width: 66.6666666667%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+
+}
+
+
+@media (min-width: 1024px) {
+    .header h2 {
+        font-size: 2.25rem;
+    }
+
+    .accordion-question {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
