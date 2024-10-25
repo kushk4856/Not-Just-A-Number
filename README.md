@@ -1,1 +1,1 @@
-<h1><a href='https://njan-24-10-update.netlify.app'>Live Link</a></h1>
+<h1><a href='https://loquacious-malasada-e4db15.netlify.app'>Live Link</a></h1>
