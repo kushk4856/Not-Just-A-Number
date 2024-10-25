@@ -18,7 +18,7 @@
 
     .modal-header,
     .modal-body {
-        padding: 1rem;
+        padding: 1rem 2rem;
     }
 
     .modal-footer {
@@ -63,17 +63,7 @@
     }
 }
 
-
-
-
 /* ============custon responsive css========= */
-
-
-
-
-
-
-
 
 
 @media (min-width: 576px) {
@@ -89,6 +79,13 @@
     .justify-content-sm-center {
         justify-content: center !important;
     }
+
+    .modal-container.show .modal-content {
+        max-width: 40%;
+        max-height: 90vh;
+    }
+
+
 }
 
 @media (min-width: 768px) {
@@ -104,6 +101,8 @@
         flex: 0 0 auto;
         width: 58.3333333333%;
     }
+
+
 }
 
 @media (min-width: 992px) {
@@ -117,12 +116,16 @@
     }
 
     .col-lg-9 {
-        width: 70%;
+        width: 75%;
     }
 
     .col-lg-8 {
         flex: 0 0 auto;
         width: 66.6666666667%;
+    }
+
+    #stickyDiv {
+        display: block !important;
     }
 }
 
