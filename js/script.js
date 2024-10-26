@@ -26,7 +26,7 @@ toglleBtn.addEventListener("click", () => {
 document.querySelectorAll(".mobile_menu_btns .nav-link").forEach((link) => {
   link.addEventListener("click", (e) => {
     if (e.target.classList.contains("nav-link")) {
-      mobileMenu.style.display = "none";
+      mobileMenu.classList.remove("active");
       toggleImg.classList.remove("show");
       checkActive();
     }
