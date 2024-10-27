@@ -810,8 +810,8 @@ Accordion FAQ section start here
 .accordion-content {
     height: 0;
     overflow: hidden;
-    transition: height 0.3s ease-in-out;
     text-align: left;
+    transition: height 0.3s ease-in-out;
 }
 
 .accordion-answer {
@@ -912,9 +912,9 @@ modal css start here
     max-height: calc(100vh - 2rem);
     display: flex;
     flex-direction: column;
-    transform: translateY(-50px);
+    transform: translateY(-100px);
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 
 }
 
@@ -998,7 +998,7 @@ modal css start here
 
 /* Close animation */
 .modal-container.hiding .modal-content {
-    transform: translateY(50px);
+    transform: translateY(100px);
     opacity: 0;
 }
 
