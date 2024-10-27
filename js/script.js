@@ -1,4 +1,9 @@
-// ------------navbar toggle ----------
+/*
+ =========================
+? => Navbar Toggle Btn
+=========================
+ */
+
 const toglleBtn = document.querySelector(".toggle_icon");
 const mobileMenu = document.getElementById("mobile_navbar");
 const toggleImg = document.getElementById("toggle_img");
@@ -33,7 +38,11 @@ document.querySelectorAll(".mobile_menu_btns .nav-link").forEach((link) => {
   });
 });
 
-// ----report section ------
+/* 
+=============================================
+? => Report Section Read more and less Btn
+==============================================
+ */
 
 document.querySelectorAll(".read-more-btn").forEach((button) => {
   button.addEventListener("click", function () {
@@ -68,12 +77,20 @@ document.querySelectorAll(".card-body").forEach((body) => {
   // body.style.height = `${description.offsetHeight}px`;
 });
 
-// -----accordian functionality----
+/* 
+===========================================================
+? => Accordion Functionality and Load more Functionaliy
+===========================================================
+ */
 
 const accordionItems = document.querySelectorAll(".accordion-item");
 const loadMoreBtn = document.getElementById("load_more");
+const accordion = document.getElementById("faqAccordion");
+const container = document.querySelector(".accordion-container");
 let openItem = null;
+let isExpanded = false;
 
+// ---Handle accordion clicks
 accordionItems.forEach((item, index) => {
   const AccordianBtn = item.querySelector(".accordion-button");
   const content = item.querySelector(".accordion-content");
@@ -104,42 +121,93 @@ accordionItems.forEach((item, index) => {
   });
 });
 
-// load more btn
-loadMoreBtn.addEventListener("click", (e) => {
+// ---Handle Load More
+loadMoreBtn.addEventListener("click", () => {
+  if (isExpanded) return;
+
+  // Set initial height
+  container.style.height = container.offsetHeight + "px";
+
+  // Add more FAQs
   accordionItems.forEach((item, index) => {
     if (item.classList.contains("hidden_accordion")) {
       item.classList.remove("hidden_accordion");
     }
   });
 
-  e.target.classList.add("hidden_accordion");
-  console.log(e.target);
+  // Force reflow
+  void container.offsetHeight;
+
+  // Animate to new height
+  container.style.height = accordion.offsetHeight + "px";
+
+  // Fade in new items
+  setTimeout(() => {
+    document.querySelectorAll(".new-item").forEach((item) => {
+      item.style.opacity = "1";
+      item.style.transform = "translateY(0)";
+    });
+    // loadMoreBtn.style.visibility = "hidden";
+  }, 50);
+
+  // Cleanup;
+  setTimeout(() => {
+    container.style.height = "auto";
+    document.querySelectorAll(".new-item").forEach((item) => {
+      item.classList.remove("new-item");
+    });
+    loadMoreBtn.style.display = "none";
+  }, 500);
+
+  isExpanded = true;
 });
 
-// --- modal functionality----
+/* 
+==========================================================
+? => Modal Functionality 
+========================================================== 
 
+ */
+
+//open modal
 function openModal(modalId) {
   // document.body.style.overflow = "hidden";
-  document.getElementById(`${modalId}-backdrop`).classList.add("show");
-  document.getElementById(`${modalId}-container`).classList.add("show");
+  const backdrop = document.getElementById(`${modalId}-backdrop`);
+  const container = document.getElementById(`${modalId}-container`);
+
+  // Remove hiding class if present
+  backdrop.classList.remove("hiding");
+  container.classList.remove("hiding");
+
+  // Show modal
+  backdrop.classList.add("show");
+  container.classList.add("show");
 }
 
+//close modal
 function closeModal(modalId) {
-  // document.body.style.overflow = "unset";
-  document.getElementById(`${modalId}-backdrop`).classList.remove("show");
-  document.getElementById(`${modalId}-container`).classList.remove("show");
+  const backdrop = document.getElementById(`${modalId}-backdrop`);
+  const container = document.getElementById(`${modalId}-container`);
+
+  // Add hiding class for close animation
+  backdrop.classList.add("hiding");
+  container.classList.add("hiding");
+
+  // Remove show class after animation
+  setTimeout(() => {
+    backdrop.classList.remove("show");
+    container.classList.remove("show");
+    backdrop.classList.remove("hiding");
+    container.classList.remove("hiding");
+    document.body.style.overflow = "unset";
+  }, 300);
 }
 
-// Close modal when clicking on backdrop
-const backdrops = document.querySelectorAll(".modal-backdrop");
-backdrops.forEach((backdrop) => {
-  backdrop.addEventListener("click", function () {
-    const modalId = this.id.replace("-backdrop", "");
-    closeModal(modalId);
-  });
-});
-
-// ------------pagination for testimonial ---
+/* 
+================================================================
+? => Testimonial Pagination Functionality 
+================================================================
+ */
 
 // Function to show testimonials for a specific page
 function renderTestimonials(page) {
@@ -208,6 +276,11 @@ const observer = new IntersectionObserver(
 
 observer.observe(whoSection);
 
+/* 
+========================================
+? => Mobile Footer will show after scroll 
+==========================================
+ */
 window.addEventListener("scroll", () => {
   const header = document.querySelector(".register_mobile");
   const hero = document.getElementById("hero");

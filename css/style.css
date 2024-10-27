@@ -744,6 +744,12 @@ Accordion FAQ section start here
     color: #666;
 }
 
+.accordion-container {
+    position: relative;
+    overflow: hidden;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Accordion styles */
 .accordion {
     display: flex;
@@ -872,21 +878,28 @@ modal css start here
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transition: opacity 0.5s;
-    display: none;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 9999;
 }
 
 .modal-container {
     position: fixed;
     inset: 0;
-    z-index: 9999;
+    z-index: 10000;
     overflow-y: auto;
-    display: none;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal-wrapper {
+    min-height: 100vh;
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-content {
@@ -896,12 +909,13 @@ modal css start here
     background: white;
     border-radius: 0.2rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: scale(0.95);
-    transition: all 0.3s;
     max-height: calc(100vh - 2rem);
     display: flex;
     flex-direction: column;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+
 }
 
 /* Modal header */
@@ -966,19 +980,30 @@ modal css start here
     flex-shrink: 0;
 }
 
-/* Show modal */
+/* Show modal animations */
 .modal-backdrop.show {
-    display: block;
     opacity: 1;
+    visibility: visible;
 }
 
 .modal-container.show {
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal-container.show .modal-content {
+    transform: translateY(0);
     opacity: 1;
-    transform: scale(1);
+}
+
+/* Close animation */
+.modal-container.hiding .modal-content {
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.modal-backdrop.hiding {
+    opacity: 0;
 }
 
 /* Close icon */
