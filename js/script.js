@@ -289,6 +289,6 @@ window.addEventListener("scroll", () => {
   if (window.scrollY > 110) {
     header.style.display = "block";
   } else {
-    header.style.display = "none";
+    header.style.display = "block";
   }
 });
