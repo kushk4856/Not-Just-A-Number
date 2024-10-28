@@ -530,8 +530,15 @@ div#thumb_0 {
 }
 
 #benefits,
-#people {
-    margin-top: 0
+#people,
+#faq,
+#getreport {
+    margin-top: 0;
+}
+
+#faq,
+#getreport {
+    margin-bottom: 0 !important;
 }
 
 .benefits_block_content {
@@ -973,7 +980,7 @@ div#thumb_0 {
 
 .left-area p {
     color: #707070;
-    font-size: 16px;
+    font-size: 17px;
     font-family: Nunito;
     text-align: center;
     margin-left: 0;

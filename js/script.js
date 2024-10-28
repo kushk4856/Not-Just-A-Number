@@ -7,7 +7,6 @@
 const toglleBtn = document.querySelector(".toggle_icon");
 const mobileMenu = document.getElementById("mobile_navbar");
 const toggleImg = document.getElementById("toggle_img");
-console.log(toggleImg);
 
 function checkActive() {
   toglleBtn.classList.toggle("toggle_icon_active");
@@ -87,8 +86,18 @@ const accordionItems = document.querySelectorAll(".accordion-item");
 const loadMoreBtn = document.getElementById("load_more");
 const accordion = document.getElementById("faqAccordion");
 const container = document.querySelector(".accordion-container");
-let openItem = null;
+let openItem = 0;
 let isExpanded = false;
+
+// ------------- first accordionItem will be open initially
+const firstItem = accordionItems[0];
+const firstContent = firstItem.querySelector(".accordion-content");
+const firstAnswer = firstItem.querySelector(".accordion-answer");
+const firstIcon = firstItem.querySelector(".accordion-icon");
+
+firstContent.style.height = firstAnswer.scrollHeight + "px";
+firstAnswer.classList.add("show");
+firstIcon.classList.add("rotate");
 
 // ---Handle accordion clicks
 accordionItems.forEach((item, index) => {
@@ -109,13 +118,13 @@ accordionItems.forEach((item, index) => {
 
     if (isOpen) {
       content.style.height = "0";
-      answer.classList.remove("show");
-      icon.classList.remove("rotate");
+      answer.classList.toggle("show");
+      icon.classList.toggle("rotate");
       openItem = null;
     } else {
       content.style.height = answer.scrollHeight + "px";
-      answer.classList.add("show");
-      icon.classList.add("rotate");
+      answer.classList.toggle("show");
+      icon.classList.toggle("rotate");
       openItem = index;
     }
   });
@@ -174,6 +183,7 @@ function openModal(modalId) {
   // document.body.style.overflow = "hidden";
   const backdrop = document.getElementById(`${modalId}-backdrop`);
   const container = document.getElementById(`${modalId}-container`);
+  const modalWrapper = container.querySelector(".modal-wrapper");
 
   // Remove hiding class if present
   backdrop.classList.remove("hiding");
@@ -182,6 +192,14 @@ function openModal(modalId) {
   // Show modal
   backdrop.classList.add("show");
   container.classList.add("show");
+
+  // Add click event listener to the modal wrapper
+  modalWrapper.addEventListener("click", (event) => {
+    // If clicked element is the modal wrapper (the outer area)
+    if (event.target === modalWrapper) {
+      closeModal(modalId);
+    }
+  });
 }
 
 //close modal
