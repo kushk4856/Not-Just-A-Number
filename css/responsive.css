@@ -24,6 +24,11 @@
     .row_laptop {
         height: 75px
     }
+
+    .logo_img {
+        height: 30px;
+        width: 240px;
+    }
 }
 
 @media (min-width:640px) {
